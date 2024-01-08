@@ -8,7 +8,6 @@ surreal.connect(process.env.SURREAL_URL as string, {
 	auth: {
 		namespace: process.env.SURREAL_NAMESPACE ?? '',
 		database: process.env.SURREAL_DATABASE ?? '',
-		scope: process.env.SURREAL_SCOPE ?? '',
 		username: process.env.SURREAL_USERNAME ?? '',
 		password: process.env.SURREAL_PASSWORD ?? '',
 	},
