@@ -5,8 +5,8 @@ import { Menu } from "@/components/menu"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'supr.st',
-  description: 'Simple url shortener',
+  title: 'awsm.cat',
+  description: 'Simple pastebin',
 }
 
 export default function RootLayout({
