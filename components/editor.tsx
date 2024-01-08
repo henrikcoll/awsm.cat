@@ -50,7 +50,7 @@ export function Editor({ props: { url, setUrl, content, setContent } }: { props:
 		});
 
 		const body = await response.json();
-		setUrl(`https://awsm.cat/${body.code}`)
+		setUrl(body.url)
 	}
 
 	return (

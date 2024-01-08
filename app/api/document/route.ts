@@ -1,15 +1,19 @@
 import {customAlphabet} from 'nanoid';
-import { sql } from "@vercel/postgres";
+import { getDb } from '@/lib/surreal';
 
 const nanoid = customAlphabet('useandomTPXpxJACKVERYMNDBUSHWOFGQZbfghjkqvwyzrct', 5);
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const id = `${nanoid(5)}-${nanoid(5)}`;
+	const id = `${nanoid(5)}`;
 
-	await sql`INSERT INTO documents (id, content) VALUES (${id}, ${body.content})`;
+	const db = await getDb();
 
-	return new Response(JSON.stringify({ code: id }), {
+	await db.create('document', { id, content: body.content });
+
+	const baseUrl = process.env.BASE_URL || `https://${process.env.VERCEL_URL}`;
+
+	return new Response(JSON.stringify({ code: id, url: `${baseUrl}/${id}` }), {
 		headers: {
 			'content-type': 'application/json;charset=UTF-8',
 		},

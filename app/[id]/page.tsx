@@ -11,9 +11,9 @@ export default function Home() {
 	const params = useParams<{ id: string }>()
 
 	React.useEffect(() => {
-		fetch(`https://awsm.cat/api/document/${params.id}`).then(async (response) => {
+		fetch(`http://localhost:3000/api/document/${params.id}`).then(async (response) => {
 			const body = await response.json();
-			setUrl(`https://awsm.cat/${body.code}`)
+			setUrl(body.url)
 			setContent(body.content)
 		})
 	}, [])
