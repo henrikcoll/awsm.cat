@@ -11,7 +11,7 @@ export default function Home() {
 	const params = useParams<{ id: string }>()
 
 	React.useEffect(() => {
-		fetch(`http://localhost:3000/api/document/${params.id}`).then(async (response) => {
+		fetch(`/api/document/${params.id}`).then(async (response) => {
 			const body = await response.json();
 			setUrl(body.url)
 			setContent(body.content)
